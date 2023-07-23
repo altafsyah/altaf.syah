@@ -7,7 +7,7 @@ export default function MainLayout() {
     <main className="w-full h-screen px-5 xl:px-32 py-12 flex flex-col justify-between text-main relative">
       {/* Navigation Bar */}
       <Navbar />
-      <section id="content" className="my-10">
+      <section id="content" className="mt-10 pb-32 lg:pb-0 lg:my-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8 w-full">
           <div className="order-1">
             <div
@@ -59,7 +59,7 @@ export default function MainLayout() {
           </div>
         </div>
       </section>
-      <Footer index={2} />
+      <Footer index={1} />
     </main>
   );
 }
