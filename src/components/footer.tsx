@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRocket, faHouse, faLaptop, faUser, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+
 
 const LIST_IMAGE: string[]  = [
   "/icon-home.svg",
@@ -9,35 +12,38 @@ const LIST_IMAGE: string[]  = [
   "/icon-uses.svg",
 ]
 
-function FooterLink({ to, text, isActive ,index }: { to: string; text?: string, isActive: boolean, index: number }) {
+function FooterLink({ to, text, isActive ,icon }: { to: string; text?: string, isActive?: boolean, icon: IconDefinition }) {
   return (
     <Link
       href={to}
-      className={`flex justify-center items-center bg-main cursor-pointer w-10 h-10 rounded-lg transition-transform duration-75 ${isActive ? "scale-110" :"hover:scale-110"}`}
+      className={`flex justify-center items-center text-white bg-grey-main cursor-pointer w-10 h-10 rounded-lg transition-transform duration-75 ${isActive ? "scale-110" :"hover:scale-110"}`}
     >
-      <Image src={LIST_IMAGE[index]} alt="Icon Footer" width={20} height={20}  />
+      <FontAwesomeIcon icon={icon} className="h-1/2"/>
     </Link>
   );
 }
 
-export default function Footer({ index }: { index: number}) {
+export default function Footer(
+  // { index }: { index: number}
+  {isDarkMode}: {isDarkMode: boolean}
+) {
   return (
-    <footer className="mx-auto px-5 py-3 rounded-xl fixed bg-white backdrop-blur-xl bottom-5  right-1/2 translate-x-1/2 lg:static lg:translate-x-0">
+    <footer className={`mx-auto px-5 py-3 rounded-xl fixed ${isDarkMode ? "bg-white" : "bg-main"} backdrop-blur-xl bottom-5  right-1/2 translate-x-1/2 lg:static lg:translate-x-0`}>
       <ul className="flex gap-x-5">
         <li>
-          <FooterLink to="/" isActive={index == 0} index={0}/>
+          <FooterLink to="/" icon={faHouse}/>
         </li>
         <li>
-          <FooterLink to="/about" isActive={index == 1} index={1}/>
+          <FooterLink to="/about"  icon={faRocket}/>
         </li>
         <li>
-          <FooterLink to="/project" isActive={index == 2} index={2}/>
+          <FooterLink to="/project"  icon={faRocket}/>
         </li>
         <li>
-          <FooterLink to="/journey" isActive={index == 3} index={3}/>
+          <FooterLink to="/journey"  icon={faUser}/>
         </li>
         <li>
-          <FooterLink to="/uses" isActive={index == 4} index={4}/>
+          <FooterLink to="/uses"  icon={faLaptop}/>
         </li>
       </ul>
     </footer>

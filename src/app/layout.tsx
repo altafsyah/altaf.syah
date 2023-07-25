@@ -1,6 +1,10 @@
+'use client'
+import Navbar from '@/components/navbar'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import Footer from '@/components/footer'
+import { useState } from 'react'
 
 const poppins = Poppins({ weight: ['400', '700', '900'], subsets: ['latin'] })
 
@@ -14,9 +18,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  function toggleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
+
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={`${isDarkMode ? "bg-grey-main" : "bg-white"} ${poppins.className} transition-all duration-200 w-full h-screen px-5 xl:px-32 py-12 flex flex-col justify-between text-main relative`}>
+        <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+        {children}
+        <Footer isDarkMode={isDarkMode}/>
+      </body>
     </html>
   )
 }
