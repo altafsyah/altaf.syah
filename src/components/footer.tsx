@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket, faHouse, faLaptop, faUser, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faRocket, faHouse, faLaptop, faUser, IconDefinition, faSuitcase } from "@fortawesome/free-solid-svg-icons";
 
 
 const LIST_IMAGE: string[]  = [
@@ -34,13 +34,13 @@ export default function Footer(
           <FooterLink to="/" icon={faHouse}/>
         </li>
         <li>
-          <FooterLink to="/about"  icon={faRocket}/>
+          <FooterLink to="/about"  icon={faUser}/>
         </li>
         <li>
-          <FooterLink to="/project"  icon={faRocket}/>
+          <FooterLink to="/journey"  icon={faRocket}/>
         </li>
         <li>
-          <FooterLink to="/journey"  icon={faUser}/>
+          <FooterLink to="/project"  icon={faSuitcase}/>
         </li>
         <li>
           <FooterLink to="/uses"  icon={faLaptop}/>
